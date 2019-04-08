@@ -4,7 +4,7 @@ A Tron: Legacy inspired theme
 
 ## Screenshots
 #### Javascript
-![Screen Shot 2019-04-06 at 8 51 09 PM](https://user-images.githubusercontent.com/626628/55678390-b7ef2380-58ad-11e9-91b0-7e9fff86a4df.png)
+![Screen Shot 2019-04-07 at 10 30 58 PM](https://user-images.githubusercontent.com/626628/55700622-da07a500-5984-11e9-8b5f-8db22a8c4b9e.png)
 
 #### Ruby
-![Screen Shot 2019-04-06 at 9 01 25 PM](https://user-images.githubusercontent.com/626628/55678470-2bddfb80-58af-11e9-96c5-65f4c6bc778e.png)
+![Screen Shot 2019-04-07 at 10 32 44 PM](https://user-images.githubusercontent.com/626628/55700690-1804c900-5985-11e9-9bf2-57bf228f3dbb.png)
