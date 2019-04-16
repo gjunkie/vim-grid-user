@@ -1,6 +1,6 @@
 # grid_user
 
-A Tron: Legacy inspired theme.
+A Tron: Legacy inspired Vim color theme. This is still in its early stages.
 
 ## Screenshots
 #### Javascript
