@@ -10,6 +10,37 @@ if exists("syntax_on")
 endif
 let g:colors_name="grid"
 
+let s:gray_1=250
+let s:gray_2=236
+let s:gray_3=238
+let s:gray_4=233
+let s:gray_5=232
+let s:light_cyan=195
+let s:orange=220
+let s:sky_blue=153
+comclear
+
+function! s:hi(group, guifg, guibg, ctermfg, ctermbg, attr, guisp)
+  if a:guifg != ""
+    exec "hi " . a:group . " guifg=" . a:guifg
+  endif
+  if a:guibg != ""
+    exec "hi " . a:group . " guibg=" . a:guibg
+  endif
+  if a:ctermfg != ""
+    exec "hi " . a:group . " ctermfg=" . a:ctermfg
+  endif
+  if a:ctermbg != ""
+    exec "hi " . a:group . " ctermbg=" . a:ctermbg
+  endif
+  if a:attr != ""
+    exec "hi " . a:group . " gui=" . a:attr . " cterm=" . a:attr
+  endif
+  if a:guisp != ""
+    exec "hi " . a:group . " guisp=" . a:guisp
+  endif
+endfunction
+
 "----------------------------------------------------------------
 " General settings                                              |
 "----------------------------------------------------------------
@@ -20,109 +51,110 @@ let g:colors_name="grid"
 " --------------------------------
 " Editor settings
 " --------------------------------
-hi Normal          ctermfg=250     ctermbg=none    cterm=none
-hi Cursor          ctermfg=none    ctermbg=none    cterm=none
-hi CursorLine      ctermfg=16      ctermbg=195     cterm=none
-hi LineNr          ctermfg=008     ctermbg=none    cterm=none
-hi CursorLineNR    ctermfg=none    ctermbg=none    cterm=none
+" hi Normal          ctermfg=250     ctermbg=232    cterm=none
+call s:hi("Normal", "", "", s:sky_blue, s:gray_5, "", "")
+call s:hi("Cursor", "", "", "NONE", "NONE", "", "")
+call s:hi("CursorLine", "", "", s:gray_4, s:sky_blue, "", "")
+call s:hi("LineNr", "", "", s:gray_2, "NONE", "", "")
+call s:hi("CursorLineNR", "", "", "NONE", "NONE", "", "")
 
 " -----------------
 " - Number column -
 " -----------------
-hi CursorColumn    ctermfg=none    ctermbg=none    cterm=none
-hi FoldColumn      ctermfg=none    ctermbg=none    cterm=none
-hi SignColumn      ctermfg=none    ctermbg=none    cterm=none
-hi Folded          ctermfg=none    ctermbg=none    cterm=none
+call s:hi("CursorColumn", "", "", "NONE", "NONE", "", "")
+call s:hi("FoldColumn", "", "", "NONE", "NONE", "", "")
+call s:hi("SignColumn", "", "", "NONE", "NONE", "", "")
+call s:hi("Folded", "", "", "NONE", "NONE", "", "")
 
 " -------------------------
 " - Window/Tab delimiters - 
 " -------------------------
-hi VertSplit       ctermfg=16      ctermbg=16      cterm=none
-hi ColorColumn     ctermfg=251     ctermbg=251     cterm=none
-hi TabLine         ctermfg=none    ctermbg=none    cterm=none
-hi TabLineFill     ctermfg=none    ctermbg=none    cterm=none
-hi TabLineSel      ctermfg=none    ctermbg=none    cterm=none
+call s:hi("VertSplit", "", "", s:gray_5, s:gray_2, "", "")
+call s:hi("ColorColumn", "", "", s:gray_1, s:gray_1, "", "")
+call s:hi("TabLine", "", "", "NONE", "NONE", "", "")
+call s:hi("TabLineFill", "", "", "NONE", "NONE", "", "")
+call s:hi("TabLineSel", "", "", "NONE", "NONE", "", "")
 
 " -------------------------------
 " - File Navigation / Searching -
 " -------------------------------
-hi Directory       ctermfg=195     ctermbg=none    cterm=none
-hi Search          ctermfg=16      ctermbg=159     cterm=none
-hi IncSearch       ctermfg=none    ctermbg=195     cterm=none
+call s:hi("Directory", "", "", s:sky_blue, "NONE", "", "")
+call s:hi("Search", "", "", s:gray_4, s:sky_blue, "", "")
+call s:hi("IncSearch", "", "", "NONE", s:sky_blue, "", "")
 
 " -----------------
 " - Prompt/Status -
 " -----------------
-hi StatusLine      ctermfg=none    ctermbg=none    cterm=none
-hi StatusLineNC    ctermfg=16      ctermbg=none    cterm=none
-hi WildMenu        ctermfg=none    ctermbg=none    cterm=none
-hi Question        ctermfg=none    ctermbg=none    cterm=none
-hi Title           ctermfg=none    ctermbg=none    cterm=none
-hi ModeMsg         ctermfg=none    ctermbg=none    cterm=none
-hi MoreMsg         ctermfg=none    ctermbg=none    cterm=none
+call s:hi("StatusLine", "", "", "NONE", "NONE", "", "")
+call s:hi("StatusLineNC", "", "", s:gray_4, "NONE", "", "")
+call s:hi("WildMenu", "", "", "NONE", "NONE", "", "")
+call s:hi("Question", "", "", "NONE", "NONE", "", "")
+call s:hi("Title", "", "", "NONE", "NONE", "", "")
+call s:hi("ModeMsg", "", "", "NONE", "NONE", "", "")
+call s:hi("MoreMsg", "", "", "NONE", "NONE", "", "")
 
 " --------------
 " - Visual aid -
 " --------------
-hi MatchParen      ctermfg=16      ctermbg=243     cterm=none
-hi Visual          ctermfg=16      ctermbg=195     cterm=none
-hi VisualNOS       ctermfg=none    ctermbg=none    cterm=none
-hi NonText         ctermfg=16      ctermbg=none    cterm=none
+call s:hi("MatchParen", "", "", s:gray_4, s:sky_blue, "", "")
+call s:hi("Visual", "", "", s:gray_4, s:light_cyan, "", "")
+call s:hi("VisualNOS", "", "", "NONE", "NONE", "", "")
+call s:hi("NonText", "", "", s:gray_4, "NONE", "", "")
 
-hi Todo            ctermfg=244     ctermbg=none    cterm=none
-hi Underlined      ctermfg=none    ctermbg=none    cterm=none
-hi Error           ctermfg=none    ctermbg=none    cterm=none
-hi ErrorMsg        ctermfg=none    ctermbg=none    cterm=none
-hi WarningMsg      ctermfg=none    ctermbg=none    cterm=none
-hi Ignore          ctermfg=none    ctermbg=none    cterm=none
-hi SpecialKey      ctermfg=none    ctermbg=none    cterm=none
+call s:hi("Todo", "", "", s:orange, "NONE", "", "")
+call s:hi("Underlined", "", "", "NONE", "NONE", "", "")
+call s:hi("Error", "", "", "NONE", "NONE", "", "")
+call s:hi("ErrorMsg", "", "", "NONE", "NONE", "", "")
+call s:hi("WarningMsg", "", "", "NONE", "NONE", "", "")
+call s:hi("Ignore", "", "", "NONE", "NONE", "", "")
+call s:hi("SpecialKey", "", "", "NONE", "NONE", "", "")
 
 " --------------------------------
 " Variable types
 " --------------------------------
-hi Constant        ctermfg=195     ctermbg=none    cterm=none
-hi String          ctermfg=195     ctermbg=none    cterm=none
-hi StringDelimiter ctermfg=195     ctermbg=none    cterm=none
-hi Character       ctermfg=195     ctermbg=none    cterm=none
-hi Number          ctermfg=195     ctermbg=none    cterm=none
-hi Boolean         ctermfg=195     ctermbg=none    cterm=none
-hi Float           ctermfg=195     ctermbg=none    cterm=none
+call s:hi("Constant", "", "", s:orange, "NONE", "", "")
+call s:hi("String", "", "", s:light_cyan, "NONE", "", "")
+call s:hi("StringDelimiter", "", "", s:sky_blue, "NONE", "", "")
+call s:hi("Character", "", "", s:sky_blue, "NONE", "", "")
+call s:hi("Number", "", "", s:sky_blue, "NONE", "", "")
+call s:hi("Boolean", "", "", s:sky_blue, "NONE", "", "")
+call s:hi("Float", "", "", s:sky_blue, "NONE", "", "")
 
-hi Identifier      ctermfg=195     ctermbg=none    cterm=none
-hi Function        ctermfg=195     ctermbg=none    cterm=none
+call s:hi("Identifier", "", "", s:sky_blue, "NONE", "", "")
+call s:hi("Function", "", "", s:light_cyan, "NONE", "", "")
 
 " --------------------------------
 " Language constructs
 " --------------------------------
-hi Statement       ctermfg=195     ctermbg=none    cterm=none
-hi Conditional     ctermfg=195     ctermbg=none    cterm=none
-hi Repeat          ctermfg=none    ctermbg=none    cterm=none
-hi Label           ctermfg=195     ctermbg=none    cterm=none
-hi Operator        ctermfg=195     ctermbg=none    cterm=none
-hi Keyword         ctermfg=195     ctermbg=none    cterm=none
-hi Exception       ctermfg=none    ctermbg=none    cterm=none
+call s:hi("Statement", "", "", s:sky_blue, "NONE", "", "")
+call s:hi("Conditional", "", "", s:sky_blue, "NONE", "", "")
+call s:hi("Repeat", "", "", "NONE", "NONE", "", "")
+call s:hi("Label", "", "", s:sky_blue, "NONE", "", "")
+call s:hi("Operator", "", "", s:sky_blue, "NONE", "", "")
+call s:hi("Keyword", "", "", s:sky_blue, "NONE", "", "")
+call s:hi("Exception", "", "", "NONE", "NONE", "", "")
 
-hi Comment         ctermfg=008     ctermbg=none    cterm=none
-hi Special         ctermfg=251     ctermbg=none    cterm=none
-hi SpecialChar     ctermfg=none    ctermbg=none    cterm=none
-hi Tag             ctermfg=none    ctermbg=none    cterm=none
-hi Delimiter       ctermfg=195     ctermbg=none    cterm=none
-hi SpecialComment  ctermfg=none    ctermbg=none    cterm=none
-hi Debug           ctermfg=none    ctermbg=none    cterm=none
+call s:hi("Comment", "", "", s:gray_3, "NONE", "", "")
+call s:hi("Special", "", "", "NONE", "NONE", "", "")
+call s:hi("SpecialChar", "", "", "NONE", "NONE", "", "")
+call s:hi("Tag", "", "", "NONE", "NONE", "", "")
+call s:hi("Delimiter", "", "", s:gray_1, "NONE", "", "")
+call s:hi("SpecialComment", "", "", "NONE", "NONE", "", "")
+call s:hi("Debug", "", "", "NONE", "NONE", "", "")
 
 " ----------
 " - C like -
 " ----------
-hi PreProc         ctermfg=none    ctermbg=none    cterm=none
-hi Include         ctermfg=195     ctermbg=none    cterm=none
-hi Define          ctermfg=none    ctermbg=none    cterm=none
-hi Macro           ctermfg=none    ctermbg=none    cterm=none
-hi PreCondit       ctermfg=none    ctermbg=none    cterm=none
+call s:hi("PreProc", "", "", "NONE", "NONE", "", "")
+call s:hi("Include", "", "", s:sky_blue, "NONE", "", "")
+call s:hi("Define", "", "", "NONE", "NONE", "", "")
+call s:hi("Macro", "", "", "NONE", "NONE", "", "")
+call s:hi("PreCondit", "", "", "NONE", "NONE", "", "")
 
-hi Type            ctermfg=251     ctermbg=none    cterm=none
-hi StorageClass    ctermfg=195     ctermbg=none    cterm=none
-hi Structure       ctermfg=none    ctermbg=none    cterm=none
-hi Typedef         ctermfg=251     ctermbg=none    cterm=none
+call s:hi("Type", "", "", s:gray_1, "NONE", "", "")
+call s:hi("StorageClass", "", "", s:sky_blue, "NONE", "", "")
+call s:hi("Structure", "", "", "NONE", "NONE", "", "")
+call s:hi("Typedef", "", "", s:gray_1, "NONE", "", "")
 
 " --------------------------------
 " Diff
@@ -130,34 +162,76 @@ hi Typedef         ctermfg=251     ctermbg=none    cterm=none
 hi DiffAdd         ctermfg=119     ctermbg=none    cterm=none
 hi DiffChange      ctermfg=184     ctermbg=none    cterm=none
 hi DiffDelete      ctermfg=196     ctermbg=none    cterm=none
-hi DiffText        ctermfg=none    ctermbg=none    cterm=none
+call s:hi("DiffText", "", "", "NONE", "NONE", "", "")
 
 " --------------------------------
 " Completion menu
 " --------------------------------
-hi Pmenu           ctermfg=251     ctermbg=235    cterm=none
-hi PmenuSel        ctermfg=16      ctermbg=195    cterm=none
-hi PmenuSbar       ctermfg=none    ctermbg=16     cterm=none
-hi PmenuThumb      ctermfg=none    ctermbg=251    cterm=none
+call s:hi("Pmenu", "", "", s:gray_1, s:gray_5, "", "")
+call s:hi("PmenuSel", "", "", s:gray_4, s:sky_blue, "", "")
+call s:hi("PmenuSbar", "", "", "NONE", s:gray_4, "", "")
+call s:hi("PmenuThumb", "", "", "NONE", s:gray_1, "", "")
 
 " --------------------------------
 " Spelling
 " --------------------------------
-hi SpellBad        ctermfg=none    ctermbg=none    cterm=none
-hi SpellCap        ctermfg=none    ctermbg=none    cterm=none
-hi SpellLocal      ctermfg=none    ctermbg=none    cterm=none
-hi SpellRare       ctermfg=none    ctermbg=none    cterm=none
+call s:hi("SpellBad", "", "", "NONE", "NONE", "", "")
+call s:hi("SpellCap", "", "", "NONE", "NONE", "", "")
+call s:hi("SpellLocal", "", "", "NONE", "NONE", "", "")
+call s:hi("SpellRare", "", "", "NONE", "NONE", "", "")
 
 "--------------------------------------------------------------------
 " Specific settings                                                 |
 "--------------------------------------------------------------------
 
-hi! ALEErrorSign                   ctermfg=195     ctermbg=none
-hi! ALEWarningSign                 ctermfg=242     ctermbg=none
+call s:hi("ALEErrorSign", "", "", s:orange, "NONE", "", "")
+call s:hi("ALEWarningSign", "", "", s:gray_3, "NONE", "", "")
 hi! ALEVirtualTextError            ctermfg=203     guifg=#e27878
 hi! ALEVirtualTextWarning          ctermfg=216     guifg=#e2a478
 
 "--------------------------------------------------------------------
 " Links                                                |
 "--------------------------------------------------------------------
+
+"+--- Languages ---+
+" JavaScript
+" > pangloss/vim-javascript
 hi def link jsObjectKey Label
+hi! link jsBrackets Delimiter
+hi! link jsFuncCall Function
+hi! link jsFuncParens Function
+hi! link jsObjectMethodType Delimiter
+hi! link jsNoise Comment
+hi! link jsFuncArgs Delimiter
+hi! link jsFuncArgExpression Delimiter
+hi! link jsFuncName Function
+hi! link jsFunctionKey Delimiter
+hi! link jsPrototype Keyword
+hi! link jsRegexpString SpecialChar
+hi! link jsVariableDef SpecialChar
+
+" JSX
+hi! link jsxRegion Comment
+
+" HTML
+hi! link htmlTagName Keyword
+
+" Markdown
+hi! link mkdBold Bold
+hi! link mkdItalic Italic
+hi! link mkdString Keyword
+hi! link mkdCodeStart mkdCode
+hi! link mkdCodeEnd mkdCode
+hi! link mkdBlockquote Comment
+hi! link mkdListItem Keyword
+hi! link mkdListItemLine Normal
+hi! link mkdFootnotes mkdFootnote
+hi! link mkdLink markdownLinkText
+hi! link mkdURL markdownUrl
+hi! link mkdInlineURL mkdURL
+hi! link mkdID Identifier
+hi! link mkdLinkDef mkdLink
+hi! link mkdLinkDefTarget mkdURL
+hi! link mkdLinkTitle mkdInlineURL
+hi! link mkdDelimiter Keyword
+
