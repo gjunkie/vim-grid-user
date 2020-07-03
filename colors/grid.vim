@@ -180,8 +180,8 @@ call s:hi("PmenuThumb",             "",                   "",                   
 " Spelling
 "          Group                    guifg                 guibg                 ctermfg               ctermbg               attr                  guisp
 "--------------------------------------------------------------------------------------------------------------------------------------------------------------
-call s:hi("SpellBad",               "",                   "",                   "",                   s:gray,               "",                   "")
-call s:hi("SpellCap",               "",                   "",                   "",                   s:gray,               "",                   "")
+call s:hi("SpellBad",               "",                   "",                   "",                   "",                   "",                   "")
+call s:hi("SpellCap",               "",                   "",                   "",                   "",                   "",                   "")
 call s:hi("SpellLocal",             "",                   "",                   "",                   "",                   "",                   "")
 call s:hi("SpellRare",              "",                   "",                   "",                   "",                   "",                   "")
 
